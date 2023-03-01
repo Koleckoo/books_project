@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Api\BookController;
 use App\Http\Controllers\Api\TestController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
@@ -31,3 +32,9 @@ Route::get('api/test/collection', [TestController::class, 'collectionResponse'])
 
 // route for logged in user home
 Route::get('/home', [HomeController::class, 'home'])->middleware('auth')->name('home');
+
+
+// route for detail about the book
+Route::get('/book/{book_id}', [BookController::class, 'show'])->name('book.detail');
+// post a review route from detail of the page
+Route::post('/book/{book_id}/review', [BookController::class, 'review'])->name('book.review');

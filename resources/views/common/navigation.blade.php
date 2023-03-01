@@ -1,4 +1,10 @@
 <nav>
+    @can('admin')
+        <a href="#">Admin</a>
+    @endcan
+
+
+
     <a href="{{ route('homepage') }}">
 
         @if ($current_menu_item === 'homepage')

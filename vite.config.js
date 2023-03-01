@@ -10,9 +10,11 @@ export default ({ mode }) => {
             laravel({
                 input: [
                     "resources/css/app.scss",
-                    "resources/js/app.js",
+                    "resources/js/app.jsx",
                     "resources/js/partners.jsx",
                     "resources/js/latest-book.js",
+                    "resources/js/book-search.js",
+                    "resources/js/user-list/src/user-list.jsx",
                 ],
                 refresh: true,
             }),
