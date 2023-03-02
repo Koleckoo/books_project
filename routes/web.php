@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Api\BookController;
 use App\Http\Controllers\Api\TestController;
+use App\Http\Controllers\BookshopController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
@@ -38,3 +39,9 @@ Route::get('/home', [HomeController::class, 'home'])->middleware('auth')->name('
 Route::get('/book/{book_id}', [BookController::class, 'show'])->name('book.detail');
 // post a review route from detail of the page
 Route::post('/book/{book_id}/review', [BookController::class, 'review'])->name('book.review');
+// Delete a review of a book
+Route::delete('book/{review_id}/delete', [BookController::class, 'deleteReview'])->name('delete.review');
+
+
+// Bookshop with books in it detail
+Route::get('bookshop/{bookshop_id}', [BookshopController::class, 'show'])->name('bookshop.detail');

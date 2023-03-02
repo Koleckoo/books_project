@@ -55,4 +55,14 @@ class BookController extends Controller
 
         return $books;
     }
+
+    public function deleteReview($review_id)
+    {
+        $review = Review::findOrFail($review_id);
+        $review->delete();
+
+        session()->flash('success_message', 'Review successfully deleted');
+
+        return redirect()->route('book.detail', $review->book_id);
+    }
 }

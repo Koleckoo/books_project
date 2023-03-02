@@ -14,14 +14,23 @@
 
             <button type="submit">Submit review</button>
         </form>
-        <h2>Reviews:</h2>
-        <ul>
-            @foreach ($book->reviews as $review)
-                <li>
-                    User: {{ $review->user_id }}
-                    Review: {{ $review->text }}
-                </li>
-            @endforeach
-        </ul>
     @endauth
+    <h2>Reviews:</h2>
+    <ul>
+        @foreach ($book->reviews as $review)
+            <li>
+                User: {{ $review->user_id }}
+                Review: {{ $review->text }}
+                @auth
+                    @can('admin')
+                        <form action="{{ route('delete.review', $review->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete review</button>
+                        </form>
+                    @endcan
+                @endauth
+            </li>
+        @endforeach
+    </ul>
 @endsection
